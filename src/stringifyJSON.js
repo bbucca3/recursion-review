@@ -10,12 +10,12 @@ var stringifyJSON = function(obj) {
   } else if (typeof(obj) === 'string') {
     return '"' + obj + '"';
   } else if (Array.isArray(obj)) {
-    var array = '[';
-    for (var i = 0; i < obj.length; i ++) {
-      i < obj.length - 1 ? array = array + stringifyJSON(obj[i]) + ',' : array = array + stringifyJSON(obj[i]);
-    }
-    array = array + ']';
-    return array;
+    var solution = '';
+    solution = obj.map(function(items) {
+      return stringifyJSON(items);
+    });
+    solution = solution.join(',');
+    return '[' + solution + ']';
   } else if (typeof(obj) === 'object') {
     var objectList = [];
     for (var keys in obj) {
